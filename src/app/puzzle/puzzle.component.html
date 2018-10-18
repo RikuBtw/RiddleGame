@@ -1,0 +1,23 @@
+<div class="container-puzzle">
+  <div class="container-text" *ngIf="text">
+    <p class="text">
+      {{text}}
+    </p>
+    <p class="subtext" *ngIf="subtext">
+      {{subtext}}
+    </p>
+  </div>
+  <img *ngIf="image" src="./assets/img/{{image}}" alt="" [ngClass]="isClicked ? 'shade' : ''">
+</div>
+<div class="container-message" [style.opacity]="isClicked ? '1' : '0'">
+  <p [ngClass]="isClicked ? 'text-show' : 'text-hidden'">{{tips}}</p>
+</div>
+<div class="container-input">
+  <fieldset class="field-container">
+   <input type="text" (focus)="animateInput()" (blur)="stopInput()" (ngModelChange)="doSomething($event)" [(ngModel)]="field" [placeholder]="disabled ? 'No input bar this time, can you find another way?' : 'Input your answer...'" class="field" [disabled]="disabled">
+   <div class="icons-container">
+     <div class="icon-search"></div>
+   </div>
+ </fieldset>
+</div>
+<router-outlet>
