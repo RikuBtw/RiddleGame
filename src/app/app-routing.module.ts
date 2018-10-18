@@ -17,11 +17,11 @@ const routes: Routes = [
   { path: 'changeme', component: PuzzleComponent, data : {text : 'The answer is final', tips: 'Nice try, but that\'s not the way. Check url :)', disabled: 'true'}},
   { path: 'final', component: PuzzleComponent, data : {text : 'You are really close...', multipleAnswers: [{key:'yes', route:'/congratulation'},{key:'no', href:'https://google.com'}], newRoute: '/congratulation', tips: 'Do you want to find me?'}},
   { path: 'congratulation', component: ContactComponent },
-  { path: '**', redirectTo: 'start', pathMatch: 'full' },
+  { path: '**', redirectTo: 'start', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forRoot(routes, { useHash: true })],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {}
